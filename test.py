@@ -9,4 +9,4 @@ print(a)
 print(b)
 
 f = code.Foo();
-print(f.somethingFunny())
+print(f.theAnswerToLifeUniversityAndEverything())

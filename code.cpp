@@ -20,11 +20,9 @@ vector<double> average (vector< vector<double> > i_matrix) {
 }
 
 
-class Foo{
-  Foo() { cout << "Hello World."; }
-  ~Foo() { cout << "Destructed."; }
-  int theAnswerToLifeUniversityAndEverything() { 
-    cout << "calculating the answer to life university and everyting..."; 
-    return 42;
-  }
-};
+Foo::Foo() { cout << "Hello World, Foo is created.\n"; }
+Foo::~Foo() { cout << "Foo destructed.\n"; }
+int Foo::theAnswerToLifeUniversityAndEverything() { 
+  cout << "Calculating the answer to life university and everyting...\n"; 
+  return 42;
+}

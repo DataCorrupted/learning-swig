@@ -23,7 +23,7 @@ public:
 	MaxRect(vector<vector<double>>);
 	~MaxRect(){};
 	void calMaxRect(double);
-	void calMaxRectBFS(double);
+	//void calMaxRectBFS(double);
 	LocPair getMaxRectLoc();
 	int getMaxRectSize();
 };

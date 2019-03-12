@@ -55,6 +55,7 @@ void MaxRect::calMaxRect(double threshold){
 		}}
 	}}
 };
+/*
 #define TEST_NEW_LOC_PAIR_AND_INSERT_ON_TRUE(ul, lr, set) 	\
 	if (ul.first >= 0 && ul.first < height && 				\
 			ul.second >= 0 && ul.second < width && 			\
@@ -99,6 +100,7 @@ void MaxRect::calMaxRectBFS(double threshold){
 		}
 	}}
 }
+*/
 LocPair MaxRect::getMaxRectLoc(){
 	return m_maxRectLoc;
 };

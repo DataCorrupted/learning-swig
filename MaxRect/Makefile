@@ -10,7 +10,7 @@ $(TARGET).o :
 $(TARGET)_wrap.cxx:
 	swig -c++ -python $(TARGET).i
 
-$(TARGET).so: $(TARGET).o
+$(TARGET).so: $(TARGET).o $(TARGET)_wrap.cxx
 	g++ -c -fPIC $(TARGET)_wrap.cxx  -I/usr/include/python3.6 -I/usr/lib/python3.6
 	g++ -shared -Wl,-soname,_$(TARGET).so -o _$(TARGET).so $(TARGET).o $(TARGET)_wrap.o
 
@@ -32,3 +32,4 @@ clean:
 	rm __pycache__ -rf
 	rm $(TARGET).py
 	rm *.so
+	rm test-cpp

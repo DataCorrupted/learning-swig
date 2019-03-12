@@ -8,5 +8,5 @@ print("Assignment done")
 print(a)
 print(b)
 
-f = Foo();
-f.somethingFunny()
+f = code.Foo();
+print(f.somethingFunny())

@@ -48,21 +48,21 @@ void MaxRect::calMaxRect(double threshold){
 				continue;
 			}
 			double psnr = getPSNR(upperLeft, lowerRight);
-			if (psnr > threshold) {
+			if (psnr <= threshold) {
 				m_maxRectSize = rectSize;
 				m_maxRectLoc=LocPair(upperLeft, lowerRight);
 			}
 		}}
 	}}
 };
-/*
+
 #define TEST_NEW_LOC_PAIR_AND_INSERT_ON_TRUE(ul, lr, set) 	\
 	if (ul.first >= 0 && ul.first < height && 				\
 			ul.second >= 0 && ul.second < width && 			\
 			lr.first >= 0 && lr.first < height && 			\
 			lr.second >=0 && lr.second < width){			\
 		double psnr = getPSNR(ul, lr);						\
-		if (psnr >= threshold){								\
+		if (psnr <= threshold){								\
 			set.insert({ul, lr});							\
 			int size = getRectSize(upperLeft, lowerRight); 	\
 			if (size > m_maxRectSize) {						\
@@ -100,7 +100,7 @@ void MaxRect::calMaxRectBFS(double threshold){
 		}
 	}}
 }
-*/
+
 LocPair MaxRect::getMaxRectLoc(){
 	return m_maxRectLoc;
 };

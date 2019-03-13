@@ -484,6 +484,9 @@ class MaxRect(_object):
     def calMaxRect(self, arg2):
         return _MaxRect.MaxRect_calMaxRect(self, arg2)
 
+    def calMaxRectBFS(self, arg2):
+        return _MaxRect.MaxRect_calMaxRectBFS(self, arg2)
+
     def getMaxRectLoc(self):
         return _MaxRect.MaxRect_getMaxRectLoc(self)
 

@@ -20,4 +20,7 @@ int main(int argc, char** argv){
 	MaxRect map(m);
 	map.calMaxRect(30);
 	cout << map.getMaxRectLoc() << " " << map.getMaxRectSize() << endl;
+	map.calMaxRectBFS(30);
+	cout << map.getMaxRectLoc() << " " << map.getMaxRectSize() << endl;
+
 }

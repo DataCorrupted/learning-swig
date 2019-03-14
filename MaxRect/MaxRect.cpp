@@ -19,6 +19,7 @@ int MaxRect::getRectSize(Loc& upperLeft, Loc& lowerRight){
 double MaxRect::getPSNR(Loc& upperLeft, Loc& lowerRight){
 	int rectSize = getRectSize(upperLeft, lowerRight);
 	double mse = getRectSum(upperLeft, lowerRight) / rectSize / 3;
+	if (mse < 10e-7) { return 2147483647; }
 	return 20*log10(255) - 10*log10(mse);
 }
 
@@ -56,14 +57,14 @@ void MaxRect::calMaxRect(double threshold){
 	}}
 };
 
-#define TEST_NEW_LOC_PAIR_AND_INSERT_ON_TRUE(ul, lr, set) 	\
+#define TEST_NEW_LOC_PAIR_AND_INSERT_ON_TRUE(ul, lr, Q) 	\
 	if (ul.first >= 0 && ul.first < height && 				\
 			ul.second >= 0 && ul.second < width && 			\
 			lr.first >= 0 && lr.first < height && 			\
 			lr.second >=0 && lr.second < width){			\
 		double psnr = getPSNR(ul, lr);						\
 		if (psnr <= threshold){								\
-			set.insert({ul, lr});							\
+			Q.insert({ul, lr});							\
 			int size = getRectSize(upperLeft, lowerRight); 	\
 			if (size > m_maxRectSize) {						\
 				m_maxRectSize = size;						\
@@ -74,8 +75,8 @@ void MaxRect::calMaxRect(double threshold){
 void MaxRect::calMaxRectBFS(double threshold){
 	for (int i=0; i<height; i++){
 	for (int j=0; j<width; j++){
-		if (m_map[i][j] >= threshold){
-			Loc currLoc(i, j);
+		Loc currLoc(i, j);
+		if (getPSNR(currLoc, currLoc) <= threshold){
 			set<LocPair> Q({LocPair(currLoc, currLoc)});
 			while (!Q.empty()){
 				LocPair newLocPair = *Q.begin();
